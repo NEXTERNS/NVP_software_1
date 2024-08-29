@@ -1,2 +1,2 @@
-# NVP_software_1
-this will content the first version of the project
+
+## Laravel Roles and Permission using spatie/laravel-permission package
