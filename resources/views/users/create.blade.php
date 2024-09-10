@@ -1,12 +1,13 @@
 
 @extends('body.user_dashboard')
 @section('admin')
+
  <div class="page-content">
     <div class="row">
        
         <div class="col-lg-8 margin-tb mb-4">
             <div class="pull-left">
-                <h2>Create New User
+                <h2>Create New Worker
                     <div class="float-end">
                         <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
                     </div>
@@ -26,33 +27,65 @@
         </div>
     @endif
 
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 mb-3">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Name">
+                    <input type="text" name="name" required class="form-control" placeholder="Name">
+                    
                 </div>
             </div>
             <div class="col-xs-12 mb-3">
                 <div class="form-group">
                     <strong>Email:</strong>
-                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <input type="email" name="email" required class="form-control" placeholder="Email">
                 </div>
             </div>
+
+            <div class="col-xs-12 mb-3">
+                <div class="form-group">
+                    <strong>Age:</strong>
+                    <input type="number" name="age" required class="form-control" placeholder="Age">
+                </div>
+            </div>
+
+            <div class="col-xs-12 mb-3">
+                <div class="form-group">
+                    <strong>Salary:</strong>
+                    <input type="number" name="salary" required class="form-control" placeholder="Salary">
+                </div>
+            </div>
+
             <div class="col-xs-12 mb-3">
                 <div class="form-group">
                     <strong>Password:</strong>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" required class="form-control" placeholder="Password">
                 </div>
             </div>
             <div class="col-xs-12 mb-3">
                 <div class="form-group">
                     <strong>Confirm Password:</strong>
-                    <input type="password" name="confirm-password" class="form-control" placeholder="Confirm Password">
+                    <input type="password" name="confirm-password" class="form-control" placeholder="Confirm Password" >
                 </div>
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong> workers Image:</strong>
+                    <input type="file" name="image" class="form-control" placeholder="image">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Workers Documents:</strong>
+                    <input type="file" name="document" class="form-control" placeholder="document">
+                </div>
+            </div>
+
+            
             <div class="col-xs-12 mb-3">
                 <div class="form-group">
                     <strong>Role:</strong>
@@ -63,6 +96,7 @@
                     </select>
                 </div>
             </div>
+
             <div class="col-xs-12 mb-3 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

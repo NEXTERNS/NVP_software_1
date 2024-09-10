@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('detail');
-            $table->integer('Qtyavailable');
+            $table->integer('qtyavailable');
             $table->integer('Sellingprice');
             $table->integer('Unitprice');
             $table->integer('Sellingprogress');

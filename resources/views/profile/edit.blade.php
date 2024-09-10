@@ -71,8 +71,8 @@
 
 								<h6 class="card-title">Update Your Information</h6>
 
-								<form class="forms-sample" method="post" action="" 
-                                enctype="multipart/form-data">
+								
+                <form class="forms-sample" method="POST" action="{{route('profile.update')}}"  enctype="multipart/form-data">
                                 @csrf
 									<div class="mb-3">
 										<label for="exampleInputUsername1" class="form-label">Username</label>

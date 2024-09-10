@@ -237,7 +237,16 @@
                       <span>Switch User</span>
                     </a>
                   </li>
-
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                  <li class="dropdown-item py-2">
+                    <a href="javascript:;" class="text-body ms-0">
+                      <i class="me-2 icon-md" data-feather="log-out"></i>
+                        <input type="submit" value="Log out " class="bg-dark text-white ">
+                    </form>
+                    </a>
+                  </li>
+                 
     
                 </ul>
 							</div>

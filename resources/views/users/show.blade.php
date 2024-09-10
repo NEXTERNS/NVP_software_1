@@ -26,14 +26,52 @@
             {{ $user->email }}
         </div>
     </div>
+
+    <div class="col-xs-12 mb-3">
+        <div class="form-group">
+            <strong>Age:</strong>
+            {{ $user->age }}
+        </div>
+    </div>
+
+    <div class="col-xs-12 mb-3">
+        <div class="form-group">
+            <strong>Salary:</strong>
+            {{ $user->salary }}
+        </div>
+    </div>
+    
+    <div class="col-xs-12 mb-3">
+        <div class="form-group">
+            <strong>Number Of attendance:</strong>
+            {{ $user->attendance }}
+        </div>
+    </div>
+    
+
     <div class="col-xs-12 mb-3">
         <div class="form-group">
             <strong>Roles:</strong>
             @if(!empty($user->getRoleNames()))
                 @foreach($user->getRoleNames() as $v)
-                    <label class="badge badge-secondary text-dark">{{ $v }}</label>
+                    {{ $v }}
                 @endforeach
             @endif
+        </div>
+    </div>
+
+    <div class="col-xs-12 mb-3">
+        <div class="form-group">
+            <strong>Workers Photo:</strong>
+            <img src="/images/workers/{{ $user->image }}" width="300px">
+        </div>
+    </div>
+
+    
+    <div class="col-xs-12 mb-3">
+        <div class="form-group">
+            <strong>Worker Personal Document:</strong>
+            <img src="/images/workers/{{ $user->document }}" width="300px">
         </div>
     </div>
 </div>

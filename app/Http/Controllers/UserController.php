@@ -9,6 +9,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use function Laravel\Prompts\error;
+
 
 class UserController extends Controller
 {
@@ -16,7 +18,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $data = User::latest()->paginate(5);
-        return view('users.index',compact('data'));
+        return view('users.index',compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
 
@@ -29,21 +31,47 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+
+        
+        
+
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
+            'age' =>'nullable',  
+            'salary' =>'nullable',
+            'image' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'document' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf,docx|max:2048',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
     
         $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/workers/';
+            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $postImage);
+            $input['image'] = "$postImage";
+        }
+
+        if ($document = $request->file('document')) {
+            $destinationPath = 'images/workers/';
+            $postDocument = date('YmdHis') . "." . $document->getClientOriginalExtension();
+            $document->move($destinationPath, $postDocument);
+            $input['document'] = "$postDocument";
+        }
+  
         $input['password'] = Hash::make($input['password']);
     
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-    
+        $notification = array(
+            'message'=> 'You Have Successfully Logout',
+            'alert-type' => 'success'
+        );
         return redirect()->route('users.index')
-                        ->with('success','User created successfully');
+                        ->with($notification);
     }
     
     public function show($id)
@@ -64,13 +92,41 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'name',
+            'email' => '|email|',
+            'age' =>'nullable',  
+            'salary' =>'nullable',
+            'image' => 'file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'document' => 'file|mimes:jpeg,png,jpg,gif,svg,pdf,docx|max:2048',
+            'password',
+            'roles',
         ]);
     
+    
         $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/workers/';
+            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $postImage);
+            $input['image'] = "$postImage";
+        }else{
+        unset($input['image']);
+    }
+
+        if ($document = $request->file('document')) {
+            $destinationPath = 'images/workers/';
+            $postDocument = date('YmdHis') . "." . $document->getClientOriginalExtension();
+            $document->move($destinationPath, $postDocument);
+            $input['document'] = "$postDocument";
+        } else{
+            unset($input['document']);
+        }
+
+
+
+
+
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{

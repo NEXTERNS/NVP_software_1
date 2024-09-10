@@ -37,46 +37,21 @@
                     <a href="{{route('products.create')}}" class="nav-link">Add Product </a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="nav-link">Product table</a>
+                    <a href="{{route('products.table')}}" class="nav-link">Product table</a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../pages/products/salesentry.html" class="nav-link">sales Entry</a>
+                    <a href="{{route('productsales.index')}}" class="nav-link">sales Entry</a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../pages/products/saleshistory.html" class="nav-link">Sales History</a>
+                    <a href="{{route('productsales.showsaleshistory')}}" class="nav-link">Sales History</a>
                   </li>
   
                 </ul>
               </div>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#Moreinfo" role="button" aria-expanded="false"
-                aria-controls="Moreinfo">
-                <i class="link-icon" data-feather="anchor"></i>
-                <span class="link-title">More Functions</span>
-                <i class="link-arrow" data-feather="chevron-down"></i>
-              </a>
-              <div class="collapse" id="Moreinfo">
-                <ul class="nav sub-menu">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">Customers Data</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link"> Analytics</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">Notifications</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">Resources</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-  
           </li>
-         
+          
 
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
@@ -99,8 +74,7 @@
             </div>
           </li>
 
-
-
+          
           
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#forms" role="button" aria-expanded="false" aria-controls="forms">
@@ -121,12 +95,35 @@
             </div>
           </li>
 
-
-      
           <li class="nav-item">
-            <a href="pages/apps/chat.html" class="nav-link">
+            <a class="nav-link" data-bs-toggle="collapse" href="#Moreinfo" role="button" aria-expanded="false"
+              aria-controls="Moreinfo">
+              <i class="link-icon" data-feather="anchor"></i>
+              <span class="link-title">More Functions</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="Moreinfo">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{route('customers.index')}}" class="nav-link">Customers info</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('analytics.index')}}" class="nav-link"> Analytics</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('cropper.index')}}" class="nav-link">Product Image Croper</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">Resources</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('expenditure.index')}}" class="nav-link">
               <i class="link-icon" data-feather="message-square"></i>
-              <span class="link-title">Chat</span>
+              <span class="link-title">Expenditures</span>
             </a>
           </li>
           <li class="nav-item">
@@ -252,13 +249,7 @@
             </div>
           </li>
 
-          <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <button type="submit" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                {{ __('Log Out') }}
-            </button>
-        </form>
+       
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#errorPages" role="button" aria-expanded="false" aria-controls="errorPages">
               <i class="link-icon" data-feather="cloud-off"></i>
@@ -290,20 +281,4 @@
         </ul>
       </div>
     </nav>
-    <nav class="settings-sidebar">
-      <div class="sidebar-body">
-        <a href="#" class="settings-sidebar-toggler">
-          <i data-feather="settings"></i>
-        </a>
-        <div class="theme-wrapper">
-          <h6 class="text-muted mb-2">Light Theme:</h6>
-          <a class="theme-item" href="{{asset('../demo1/dashboard.html')}}">
-            <img src="{{asset('../assets/images/screenshots/light.jpg')}}" alt="light theme">
-          </a>
-          <h6 class="text-muted mb-2">Dark Theme:</h6>
-          <a class="theme-../assets/images/screenshots/dark.jpgitem active" href="{{asset('../demo2/dashboard.html')}}">
-            <img src="{{asset('../assets/images/screenshots/dark.jpg')}}" alt="light theme">
-          </a>
-        </div>
-      </div>
-    </nav>
+   

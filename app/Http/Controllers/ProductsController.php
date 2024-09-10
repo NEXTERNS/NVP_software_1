@@ -14,7 +14,7 @@ class ProductsController extends Controller
      */
     function __construct()
     {
-        $this->middleware(['permission:product-list|product-create|product-edit|product-delete'], ['only' => ['index', 'show']]);
+        $this->middleware(['permission:product-list|product-create|product-edit|product-delete'], ['only' => ['index', 'show', 'table', 'saleshistory']]);
         $this->middleware(['permission:product-create'], ['only' => ['create', 'store']]);
         $this->middleware(['permission:product-edit'], ['only' => ['edit', 'update']]);
         $this->middleware(['permission:product-delete'], ['only' => ['destroy']]);
@@ -30,14 +30,15 @@ class ProductsController extends Controller
         return view('products.index', compact('products'));
     }
 
+    
+    //controller for product table
 
-
-
-    public function table()
-    {
-        $products = Product::latest()->paginate(50);
-        return view('products.index', compact('products'));
-    }
+        public function table(Product $product)
+        {
+            $products = Product::latest()->paginate(50);
+            return view('products.producttable', compact('products'));
+        }
+    //
 
     /**
      * Show the form for creating a new resource.
@@ -60,19 +61,27 @@ class ProductsController extends Controller
         request()->validate([
          'name' => 'required',
         'detail'  => 'required',
-        'Qtyavailable',
-        'Sellingprice',
-        'unitprice' , 
-        'image' 
+        'qtyavailable' => 'required',
+        'Sellingprice' => 'required',
+        'unitprice'  => 'required',
+        'image' => 'mimes:jpeg, png, jpg ,gif ,svg|max:2048',
+
        
         ]);
 
-        Product::create($request->all());
-
-        return redirect()->route('products.index')
-            ->with('success', 'Product created successfully.');
+        $input = $request->all();
+  
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $postImage);
+            $input['image'] = "$postImage";
+        }
+  
+        Product::create($input);
+   
+        return redirect()->route('products.index')->with('success','Product Create Successfully.');
     }
-
     /**
      * Display the specified resource.
      *
@@ -82,6 +91,13 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         return view('products.show', compact('product'));
+    }
+
+
+    //sales entry controller 
+    public function salesentry(Product $product)
+    {
+        return view('products.salesentry ', compact('product'));
     }
 
     /**
@@ -102,17 +118,32 @@ class ProductsController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product )
     {
         request()->validate([
             'name' => 'required',
-            'detail' => 'required',
-        ]);
-
-        $product->update($request->all());
-
-        return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully');
+           'detail'  => 'required',
+           'qtyavailable' => 'required',
+           'Sellingprice' => 'required',
+           'unitprice'  => 'required',
+           'image' => 'required|image|mimes:jpeg, png, jpg ,gif ,svg|max:2048',
+   
+          
+           ]);
+        $input = $request->all();
+  
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $productImage);
+            $input['image'] = "$productImage";
+        }else{
+            unset($input['image']);
+        }
+          
+        $product->update($input);
+  
+        return redirect()->route('products.index')->with('success','product Update Successfully');
     }
 
     /**

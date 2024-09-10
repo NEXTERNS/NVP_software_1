@@ -79,12 +79,14 @@ License: For each use you must have a valid license purchased only from above li
                     <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
                     
                     <form  class="forms-sample" method="POST" action="{{ route('login') }}">
-                    @csrf 
+                    @csrf
+                  
+               
 
                                 <!-- Email Address -->
                         <div class="mb-3">
                         <x-input-label for="login" :value="__('Email address/name/phone')" class="form-label"/>
-                        <x-text-input id="login" class="form-control" type="text" name="login" :value="old('login')" 
+                        <x-text-input id="email" class="form-control" type="text" name="email" :value="old('email')" 
                         required autofocus autocomplete="username" />
                         <!--<x-input-error :messages="$errors->get('email')" class="mt-2" /> -->
                     </div>

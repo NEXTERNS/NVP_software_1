@@ -55,6 +55,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <div class="page-content">
 
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Error!</strong> <br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+   
+
 <div class="row">
   <div class="col-12 grid-margin">
   
@@ -67,42 +80,42 @@
 
 								<h6 class="card-title">Add Products to the Store</h6>
 
-                                <form action="{{ route('products.store') }}" method="POST">
+                                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
 									<div class="mb-3">
 										<label for="exampleInputUsername1" class="form-label">Item Name</label>
-										<input type="text" class="form-control"  name="name" id="exampleInputUsername1" autocomplete="off" value="{{--$profileData->username--}}">
+										<input type="text" class="form-control"  name="name" id="exampleInputUsername1" autocomplete="off" required value="{{--$profileData->username--}}">
 									</div>
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Item Details</label>
-										<input type="text" class="form-control" name="detail" id="exampleInputEmail1" value="{{--$profileData->email--}}">
+										<input type="text" class="form-control" name="detail" id="exampleInputEmail1" required value="{{--$profileData->email--}}">
 									</div>
 									
                                     <div class="mb-3">
 										<label for="exampleInputPhone" class="form-label">QTy Available</label>
-										<input type="number" class="form-control"  name="Qtyavailable "
-                                        autocomplete="off" value="{{--$profileData->phone--}}">
+										<input type="number" class="form-control"  name="qtyavailable"
+                                        autocomplete="off" required value="{{--$profileData->phone--}}">
 									</div>
                                     <div class="mb-3">
 										<label for="exampleInputaddress" class="form-label">Buying Price</label>
-										<input type="number" class="form-control" id="exampleInputtext" name="Unitprice"
-                                        autocomplete="off" value="{{--$profileData->address--}}">
+										<input type="number" class="form-control" id="exampleInputtext" name="unitprice"
+                                        autocomplete="off" required value="{{--$profileData->address--}}">
 									</div>
 
                                     <div class="mb-3">
 										<label for="exampleInputaddress" class="form-label">Selling  Price</label>
 										<input type="number" class="form-control" id="exampleInputtext" name="Sellingprice"
-                                        autocomplete="off" value="{{--$profileData->address--}}">
+                                        autocomplete="off" required value="{{--$profileData->address--}}">
 									</div>
 
                                     <div class="mb-3">
 										<label class="form-label" for="formFile">Upload Item Image</label>
-										<input class="form-control"  name="image" type="file" id="image">
+										<input class="form-control"  name="image" required type="file" id="image">
 									</div>
 
                                    <div>
-                                    <img id=showImage class="wd-70 rounded-circle" src="{{--(!empty($profileData -> photo))? 
-                                        url('upload/admin_image/').'/'.$profileData->photo : url('upload/no_image.jpg') --}}">
+                                    <img id=showImage class="wd-70 rounded-circle" src="!empty($profileData -> photo))? 
+                                        url('upload/admin_image/').'/'.$profileData->photo : url('upload/no_image.jpg') ">
                                 
                                    </div>                   
                                  

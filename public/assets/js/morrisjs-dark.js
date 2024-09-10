@@ -97,9 +97,9 @@ $(function() {
   Morris.Donut({
     element: 'morrisDonut',
     data: [
-      {label: "Download Sales", value: 12},
-      {label: "In-Store Sales", value: 30},
-      {label: "Mail-Order Sales", value: 20}
+      {label: "Speakers", value: 40},
+      {label: "Dell Laptops", value: 30},
+      {label: "Chargers", value: 60}
     ],
     colors: [colors.danger, colors.info, colors.primary],
     labelColor: colors.bodyColor,
