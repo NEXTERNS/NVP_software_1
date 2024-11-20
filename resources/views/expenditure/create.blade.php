@@ -77,6 +77,80 @@
 
 
             <div class="row">
+
+                <div class="modal fade" id="varyingModal" tabindex="-1" aria-labelledby="varyingModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="varyingModalLabel">Automate Your Expenditures</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="mb-3">
+                              <label for="recipient-name" class="form-label">Create This Expence Every After:</label>
+                              <select class="form-select" data-width="100%"  name="minute">
+                                <option value="" disabled selected>Expence Per Minute</option>
+                                @foreach (range(1, 60) as $minute)
+                                    <option value="{{ $minute }}">{{ $minute }} minute{{ $minute > 1 ? 's' : '' }}</option>
+                                @endforeach
+                            
+                            </select>
+                            <br>
+                              <select class="form-select" data-width="100%"  name="hour">
+                                <option value="" disabled selected>Expence Per Hour</option>
+                                @foreach (range(1, 24) as $hour)
+                                    <option value="{{ $hour }}">{{ $hour }} hour{{ $hour > 1 ? 's' : '' }}</option>
+                                @endforeach
+                            
+                            </select>
+                <br>
+                            <select class="form-select" data-width="100%"  name="day">
+                                <option value="" disabled selected>Expence daily</option>
+                                @foreach (range(1, 7) as $day)
+                                    <option value="{{ $day }}">{{ $day }} day{{ $day > 1 ? 's' : '' }}</option>
+                                @endforeach
+                            </select>
+                <br>
+                            <select class="form-select" data-width="100%"  name="week">
+                                <option value="" disabled selected>Expence Weekly</option>
+                                @foreach (range(1, 4) as $week)
+                                    <option value="{{ $week }}">{{ $week }} Week{{ $week > 1 ? 's' : '' }}</option>
+                                @endforeach
+                                
+                            </select>
+                <br>
+                            <select class="form-select" data-width="100%"  name="month">
+                                <option value="" disabled selected>Expence Monthly</option>
+                                @foreach (range(1, 12) as $month)
+                                    <option value="{{ $month }}">{{ $month }} month{{ $month > 1 ? 's' : '' }}</option>
+                                @endforeach
+                                
+                            </select>
+
+                                            <br>
+                            <select class="form-select" data-width="100%"  name="year">
+                                <option value="" disabled selected>Expence Yearly</option>
+                                @foreach (range(1, 5) as $year)
+                                    <option value="{{ $year }}">{{ $year }} year{{ $year > 1 ? 's' : '' }}</option>
+                                @endforeach
+                                
+                            </select>
+
+                            </div>
+                            
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Take a shot Note expenditure:</strong>
@@ -96,9 +170,12 @@
     </div>
 </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+             <div class="mt-4">
+        <button type="button" class="btn btn-primary me-2 w-25" data-bs-toggle="modal" data-bs-target="#varyingModal">Create This Expence Automatically</button>
+        <button class="btn btn-secondary w-25">Cancel</button>
+        <button type="submit" class="btn btn-primary w-25" data-bs-toggle="modal" >Save Changes</button>
+
+</div>
         </div>
        
     </form>
