@@ -80,7 +80,7 @@ class ProductsController extends Controller
   
         Product::create($input);
    
-        return redirect()->route('products.index')->with('success','Product Create Successfully.');
+        return redirect()->route('products.create')->with('success','Product Create Successfully.');
     }
     /**
      * Display the specified resource.

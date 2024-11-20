@@ -81,7 +81,7 @@
                 <h5>Price Sold</h5>
                 <select class="js-example-basic-single form-select" data-width="100%" name="sellingprice">
                     @foreach ($products as $value)
-                    <option value="{{ $value->Sellingprice }}">{{ $value->Sellingprice }}</option>
+                    <option value="{{ $value->Sellingprice }}">{{ $value->Sellingprice }}frs</option>
               
                   @endforeach
                 </select>

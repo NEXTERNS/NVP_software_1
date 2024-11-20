@@ -44,12 +44,15 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Customers Portfolio:</strong>
-                <input type="text" name="portfolio" class="form-control" placeholder="portfolio">
-            </div>
-        </div>
+        <div class="col-md-12 align-content-lg-center mt-4" >
+            <strong>Customers Portfolio:</strong>
+            <select class="js-example-basic-single form-select" data-width="100%" name="portfolio">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="valuable">Valuable</option>
+            </select>
+          </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">

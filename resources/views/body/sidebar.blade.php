@@ -95,6 +95,14 @@
             </div>
           </li>
 
+            <li class="nav-item">
+
+              <a href="{{route('customers.index')}}" class="nav-link">
+                <span class="link-title"> Customers info</span>
+
+              </a>
+            </li>
+          
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#Moreinfo" role="button" aria-expanded="false"
               aria-controls="Moreinfo">
@@ -104,9 +112,7 @@
             </a>
             <div class="collapse" id="Moreinfo">
               <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{route('customers.index')}}" class="nav-link">Customers info</a>
-                </li>
+              
                 <li class="nav-item">
                   <a href="{{route('analytics.index')}}" class="nav-link"> Analytics</a>
                 </li>
@@ -126,14 +132,14 @@
               <span class="link-title">Expenditures</span>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="pages/apps/calendar.html" class="nav-link">
               <i class="link-icon" data-feather="calendar"></i>
               <span class="link-title">Calendar</span>
             </a>
-          </li>
+          </li> --}}
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link"  data-bs-toggle="collapse" href="#charts" role="button" aria-expanded="false" aria-controls="charts">
               <i class="link-icon" data-feather="pie-chart"></i>
               <span class="link-title">Charts</span>
@@ -266,18 +272,18 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> --}}
 
 
      
 
-          <li class="nav-item nav-category">Docs</li>
+          {{-- <li class="nav-item nav-category">Docs</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
               <i class="link-icon" data-feather="hash"></i>
               <span class="link-title">Documentation</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </nav>

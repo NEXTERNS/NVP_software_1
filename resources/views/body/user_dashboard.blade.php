@@ -55,11 +55,12 @@
 	  <!-- endinject -->
   
 	<!-- Layout styles -->  
-	  <link rel="stylesheet" id="themestylesheet" href="{{asset('#')}}" media="print" onload="this.media='all'">
+	  <link rel="stylesheet" id="themestylesheet" href="{{asset('../../../assets/css/demo1/style.css')}}" media="print" onload="this.media='all'">
 	  
 	<!-- End layout styles -->
 	<link rel="shortcut icon" href="{{asset('../../../assets/images/logo.png')}}" />
 
+	{{-- <link rel="stylesheet" href="{{asset('../../../assets/vendors/dropify/dist/dropify.min.css')}}"> --}}
 
 </head>
 <body>
@@ -109,7 +110,7 @@ if (preloader) {
 }
 </script>
 	<!-- core:js -->
-	<script src="{{asset('../../../assets/vendors/core/core.js')}}"></script>
+	<script src="{{asset('../../../assets/vendors/core/core.js')}}"></script> 
 	<!-- endinject -->
 
 	<!-- Plugin js for this page -->
@@ -165,7 +166,7 @@ if (preloader) {
 	 <!-- End plugin js for this page -->
  
 <!-- core:js  nnnnnnoted down-->
-  <script src="{{asset('../../../assets/vendors/core/core.js')}}"></script>  
+  {{-- <script src="{{asset('../../../assets/vendors/core/core.js')}}"></script>   --}}
 <!-- endinject -->
 
 <!-- Plugin js for this page -->

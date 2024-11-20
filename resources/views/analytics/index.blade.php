@@ -31,7 +31,7 @@
             </div>
             <div class="card-body">
             <h1 class="card-title">Revenue</h1>
-            <p class="card-text h2">1000,000frs</p>
+            <p class="card-text h2">{{$totalRevenue}}frs</p>
             </div>
         </div>
         </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="card-body">
             <h2 class="card-title"> total Profits</h2>
-            <p class="card-text h2">200,000frs</p>
+            <p class="card-text h2">{{$Total_profit}}frs</p>
             </div>
         </div>
         </div>
